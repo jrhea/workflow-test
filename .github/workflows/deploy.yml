@@ -27,13 +27,5 @@ jobs:
     - name: Install JupyterLab
       run: pip install jupyterlab
     - name: Generate markdown
-      run: jupyter nbconvert *.ipynb --TemplateExporter.exclude_input=True --to markdown && mkdir public && mv *.md public/ && mv *_files public/
+      run: jupyter nbconvert *.ipynb --TemplateExporter.exclude_input=True --to markdown && mkdir public && mv *.md docs/ && mv *_files docs/
 
-    - name: Deploy to GitHub Pages
-      if: success()
-      uses: crazy-max/ghaction-github-pages@v2
-      with:
-        target_branch: gh-pages
-        build_dir: public
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
