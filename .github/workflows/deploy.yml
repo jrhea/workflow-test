@@ -27,7 +27,7 @@ jobs:
     - name: Install JupyterLab
       run: pip install jupyterlab
     - name: Generate markdown
-      run: jupyter nbconvert *.ipynb --TemplateExporter.exclude_input=True --to markdown
+      run: jupyter nbconvert *.ipynb --TemplateExporter.exclude_input=True --to markdown && mkdir public && mv *.md public/ && mv *_files public/
 
     - name: Deploy to GitHub Pages
       if: success()
