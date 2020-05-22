@@ -29,11 +29,8 @@ jobs:
     - name: Generate markdown
       run: jupyter nbconvert *.ipynb --TemplateExporter.exclude_input=True --to html && mkdir -p public && mv *.html public/
     - name: Deploy to GitHub Pages
-      if: success()
-      uses: crazy-max/ghaction-github-pages@v2
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        target_branch: gh-pages
-        build_dir: public
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
 
