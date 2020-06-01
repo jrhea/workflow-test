@@ -27,7 +27,7 @@ jobs:
     - name: Install JupyterLab
       run: pip install jupyterlab papermill numpy matplotlib
     - name: Generate markdown
-      run: cat test.ipynb | papermill -p foo "bar" | jupyter nbconvert --stdin --TemplateExporter.exclude_input=True --to html && mkdir -p public && mv *.html public/
+      run: cat test.ipynb | papermill -p foo "bar" | jupyter nbconvert --stdin --TemplateExporter.exclude_input=True --to html --output test.html && mkdir -p public && mv *.html public/
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3.6.1
       with:
